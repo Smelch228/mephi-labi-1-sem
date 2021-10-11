@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-int fact (int num) {
+int fact (int num) {    //Функция вычисления факториала
     int res = 1;
     for(int i = 1; i <= num; i++) {
         res = res * i;
