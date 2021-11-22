@@ -49,8 +49,7 @@ char* my_strcat(char* destination, const char* source) {
     return destination; //функция возвращает указатель на новую строку
 }
 
-bool is_delim(char c, char *delim)
-{
+bool is_delim(char c, char *delim){
     while(*delim != '\0')
     {
         if(c == *delim)
@@ -60,47 +59,33 @@ bool is_delim(char c, char *delim)
     return false;
 }
 
-char *my_strtok(char *s, char *delim)
-{
-    static char *p; // start of the next search
-    if(!s)
-    {
+char *my_strtok(char *s, char *delim){
+    static char *p;
+    if(!s){
         s = p;
     }
-    if(!s)
-    {
-        // user is bad user
+    if(!s){
+        
         return NULL;
     }
-
-    // handle beginning of the string containing delims
-    while(1)
-    {
-        if(is_delim(*s, delim))
-        {
+    
+    while(1){
+        if(is_delim(*s, delim)){
             s++;
             continue;
         }
-        if(*s == '\0')
-        {
-            return NULL; // we've reached the end of the string
+        if(*s == '\0'){
+            return NULL;
         }
-        // now, we've hit a regular character. Let's exit the
-        // loop, and we'd need to give the caller a string
-        // that starts here.
         break;
     }
-
     char *ret = s;
-    while(1)
-    {
-        if(*s == '\0')
-        {
-            p = s; // next exec will return NULL
+    while(1){
+        if(*s == '\0'){
+            p = s; 
             return ret;
         }
-        if(is_delim(*s, delim))
-        {
+        if(is_delim(*s, delim)){
             *s = '\0';
             p = s + 1;
             return ret;
